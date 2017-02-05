@@ -22,7 +22,7 @@ GameObject:
   - 212: {fileID: 212000013589980916}
   - 50: {fileID: 50000012922563344}
   - 58: {fileID: 58000013478271294}
-  - 114: {fileID: 114000013589258660}
+  - 114: {fileID: 114000011576419040}
   m_Layer: 0
   m_Name: Blob
   m_TagString: Untagged
@@ -74,7 +74,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!114 &114000013589258660
+--- !u!114 &114000011576419040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011660063922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f2aecaac8e7224d9c345b64f27ffdc, type: 3}
+  m_Script: {fileID: 11500000, guid: 68853ae75ed636b45b0a32afbbec720b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212000013589980916

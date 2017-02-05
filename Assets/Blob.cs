@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Blob : MonoBehaviour {
+public class Blob : MonoBehaviour
+{
 
     Rigidbody2D blob;
     bool isOnGround = true;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         blob = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         if (Input.GetKey("a"))
         {
             blob.AddForce(new Vector2(-1, 0), ForceMode2D.Impulse);
