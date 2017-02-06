@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Blob : MonoBehaviour
@@ -36,6 +37,10 @@ public class Blob : MonoBehaviour
         {
             isOnGround = true;
         }
+        if (c.gameObject.tag == "Hazard")
+        {
+            Lose();
+        }
     }
 
     void OnCollisionExit2D(Collision2D c)
@@ -44,5 +49,10 @@ public class Blob : MonoBehaviour
         {
             isOnGround = false;
         }
+    }
+
+    void Lose()
+    {
+        
     }
 }
