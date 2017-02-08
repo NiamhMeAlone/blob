@@ -17,6 +17,14 @@ public class Blob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("w") && isOnGround)
+        {
+            blob.AddForce(new Vector2(0, 32), ForceMode2D.Impulse);
+        }
+    }
+
+    private void FixedUpdate()
+    {
         if (Input.GetKey("a"))
         {
             blob.AddForce(new Vector2(-1, 0), ForceMode2D.Impulse);
@@ -24,10 +32,6 @@ public class Blob : MonoBehaviour
         if (Input.GetKey("d"))
         {
             blob.AddForce(new Vector2(1, 0), ForceMode2D.Impulse);
-        }
-        if (Input.GetKeyDown("w") && isOnGround)
-        {
-            blob.AddForce(new Vector2(0, 32), ForceMode2D.Impulse);
         }
     }
 
@@ -37,10 +41,6 @@ public class Blob : MonoBehaviour
         {
             isOnGround = true;
         }
-        if (c.gameObject.tag == "Hazard")
-        {
-            Lose();
-        }
     }
 
     void OnCollisionExit2D(Collision2D c)
@@ -49,10 +49,5 @@ public class Blob : MonoBehaviour
         {
             isOnGround = false;
         }
-    }
-
-    void Lose()
-    {
-        
     }
 }

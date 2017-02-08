@@ -9,6 +9,7 @@ TagManager:
   - start
   - quit
   - Hazard
+  - Blob
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Below Default
+    uniqueID: 3405042579
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
