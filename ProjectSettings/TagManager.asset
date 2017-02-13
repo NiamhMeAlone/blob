@@ -10,6 +10,7 @@ TagManager:
   - quit
   - Hazard
   - Blob
+  - BlobFrag
   layers:
   - Default
   - TransparentFX

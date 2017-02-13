@@ -7,6 +7,8 @@ public class Blob : MonoBehaviour
 
     Rigidbody2D blob;
     bool isOnGround = true;
+    public int blobSize = 1;
+    public int blobSizeMod = 1;
 
     // Use this for initialization
     void Start()
@@ -37,7 +39,7 @@ public class Blob : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (c.gameObject.tag == "Floor")
+        if (c.gameObject.CompareTag("Floor"))
         {
             isOnGround = true;
         }
@@ -45,9 +47,18 @@ public class Blob : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D c)
     {
-        if (c.gameObject.tag == "Floor")
+        if (c.gameObject.CompareTag("Floor"))
         {
             isOnGround = false;
+        }
+    }
+
+    public void IncreaseSize(int amt)
+    {
+        Vector3 scale = transform.localScale;
+        for (int i = blobSize; i < blobSize + amt; i++)
+        {
+            transform.localScale = new Vector3(scale.x + (1/((float)i + 3)), scale.y + (1/((float)i + 3)), scale.z);
         }
     }
 }
