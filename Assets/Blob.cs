@@ -10,18 +10,21 @@ public class Blob : MonoBehaviour
     public int blobSize = 1;
     public int blobSizeMod = 1;
 
-    // Use this for initialization
     void Start()
     {
         blob = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown("w") && isOnGround)
         {
             blob.AddForce(new Vector2(0, 32), ForceMode2D.Impulse);
+        }
+
+        if (Input.GetMouseButtonDown(0) && blobSize > 1)
+        {
+            
         }
     }
 
@@ -60,5 +63,16 @@ public class Blob : MonoBehaviour
         {
             transform.localScale = new Vector3(scale.x + (1/((float)i + 3)), scale.y + (1/((float)i + 3)), scale.z);
         }
+        blobSize += amt;
+    }
+
+    public void DecreaseSize(int amt)
+    {
+        Vector3 scale = transform.localScale;
+        for (int i = blobSize; i >= blobSize - amt; i--)
+        {
+            transform.localScale = new Vector3(scale.x - (1 / ((float)i + 3)), scale.y - (1 / ((float)i + 3)), scale.z);
+        }
+        blobSize -= amt;
     }
 }

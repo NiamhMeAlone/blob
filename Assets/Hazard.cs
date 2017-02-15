@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour {
 
-    public GameObject lose;
+    private GameObject controller;
 
-	// Use this for initialization
-	void Start () {
-        lose.SetActive(false);
+	void Start ()
+    {
+        controller = GameObject.FindGameObjectWithTag("Controller");
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
@@ -20,7 +20,7 @@ public class Hazard : MonoBehaviour {
     {
         if (c.gameObject.CompareTag("Blob"))
         {
-            lose.SetActive(true);
+            controller.GetComponent<GameScript>().Lose();
         }
     }
 }

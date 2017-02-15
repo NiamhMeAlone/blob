@@ -5,14 +5,14 @@ using UnityEngine;
 public class BlobFrag : MonoBehaviour {
 
     public int size = 1;
-
-	// Use this for initialization
-	void Start () {
+    
+	void Start ()
+    {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
@@ -24,7 +24,7 @@ public class BlobFrag : MonoBehaviour {
             gO = collision.gameObject;
             Blob player = gO.GetComponent<Blob>();
             player.IncreaseSize(size);
-            Destroy(gameObject, .05f);
+            Destroy(gameObject, 0f);
         }
     }
 }
