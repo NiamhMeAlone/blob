@@ -10,6 +10,7 @@ TagManager:
   - Blob
   - BlobFrag
   - Controller
+  - BlobCollider
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Blobs
   - 
   - 
   - 

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50000012922563344}
   - component: {fileID: 58000013478271294}
   - component: {fileID: 114000011576419040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blob
   m_TagString: Blob
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -88,6 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68853ae75ed636b45b0a32afbbec720b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blobSize: 1
+  blobSizeMod: 1
+  active: 0
 --- !u!212 &212000013589980916
 SpriteRenderer:
   m_ObjectHideFlags: 1

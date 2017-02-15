@@ -20,7 +20,7 @@ public class GameScript : MonoBehaviour {
 	
 	void Update ()
     {
-        if(player.GetComponent<Blob>().blobSize == frags.Length + 1)
+        if(player.GetComponent<Blob>().blobSize == frags.Length + blobs.Length)
         {
             Win();
         }
@@ -29,10 +29,12 @@ public class GameScript : MonoBehaviour {
     public void Win()
     {
         winScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void Lose()
     {
         loseScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 }

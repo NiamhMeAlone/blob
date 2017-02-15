@@ -9,6 +9,7 @@ public class Blob : MonoBehaviour
     bool isOnGround = true;
     public int blobSize = 1;
     public int blobSizeMod = 1;
+    public bool active = true;
 
     void Start()
     {
@@ -17,26 +18,32 @@ public class Blob : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown("w") && isOnGround)
+        if (active)
         {
-            blob.AddForce(new Vector2(0, 32), ForceMode2D.Impulse);
-        }
+            if (Input.GetKeyDown("w") && isOnGround)
+            {
+                blob.AddForce(new Vector2(0, 32), ForceMode2D.Impulse);
+            }
 
-        if (Input.GetMouseButtonDown(0) && blobSize > 1)
-        {
-            
+            if (Input.GetMouseButtonDown(0) && blobSize > 1)
+            {
+
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey("a"))
+        if (active)
         {
-            blob.AddForce(new Vector2(-1, 0), ForceMode2D.Impulse);
-        }
-        if (Input.GetKey("d"))
-        {
-            blob.AddForce(new Vector2(1, 0), ForceMode2D.Impulse);
+            if (Input.GetKey("a"))
+            {
+                blob.AddForce(new Vector2(-1, 0), ForceMode2D.Impulse);
+            }
+            if (Input.GetKey("d"))
+            {
+                blob.AddForce(new Vector2(1, 0), ForceMode2D.Impulse);
+            }
         }
     }
 

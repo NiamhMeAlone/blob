@@ -17,6 +17,7 @@ public class MenuOptions : MonoBehaviour {
     public void startScene()
     {
         SceneManager.LoadScene("Test");
+        Time.timeScale = 1;
     }
 
     public void quitScene()
