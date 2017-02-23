@@ -19,7 +19,7 @@ public class BlobFrag : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject gO;
-        if (collision.gameObject.CompareTag("Blob"))
+        if (collision.gameObject.CompareTag("Blob") || collision.gameObject.CompareTag("Active"))
         {
             gO = collision.gameObject;
             Blob player = gO.GetComponent<Blob>();

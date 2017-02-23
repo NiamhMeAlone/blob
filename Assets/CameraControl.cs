@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour {
 
-    public GameObject player;
+    GameObject player;
 
 	void Start ()
     {
-		
+        player = GameObject.FindGameObjectWithTag("Active");
 	}
 	
 	void Update ()
     {
+        player = GameObject.FindGameObjectWithTag("Active");
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1, transform.position.z);
     }
 }

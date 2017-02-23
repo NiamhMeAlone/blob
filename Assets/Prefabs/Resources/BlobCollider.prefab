@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4870067442185994}
   - component: {fileID: 58425440749428522}
   - component: {fileID: 114802723194670964}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlobCollider
   m_TagString: BlobCollider
   m_Icon: {fileID: 0}
@@ -63,6 +63,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1247921289541874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a642b1f6c85a440839bfd25a96949d, type: 3}
+  m_Script: {fileID: 11500000, guid: f3a5f21cf4462cf41be963d6f2a0b392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  willPerform: 1

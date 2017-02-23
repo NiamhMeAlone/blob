@@ -18,7 +18,7 @@ public class Hazard : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (c.gameObject.CompareTag("Blob"))
+        if (c.gameObject.CompareTag("Blob") || c.gameObject.CompareTag("Active"))
         {
             controller.GetComponent<GameScript>().Lose();
         }

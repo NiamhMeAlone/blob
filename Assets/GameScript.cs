@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class GameScript : MonoBehaviour {
 
-    public GameObject player;
+    GameObject player;
     public GameObject winScreen;
     public GameObject loseScreen;
     public GameObject[] frags;
-    public GameObject[] blobs;
+    public Blob[] blobs;
     
+    public Camera cam;
     void Start ()
     {
         winScreen.SetActive(false);
         loseScreen.SetActive(false);
         frags = GameObject.FindGameObjectsWithTag("BlobFrag");
-        blobs = GameObject.FindGameObjectsWithTag("Blob");
+        blobs = FindObjectsOfType<Blob>();
 	}
 	
 	void Update ()
     {
+        player = GameObject.FindGameObjectWithTag("Active");
         if(player.GetComponent<Blob>().blobSize == frags.Length + blobs.Length)
         {
             Win();
