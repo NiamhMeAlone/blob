@@ -3,7 +3,9 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class MenuOptions : MonoBehaviour {
-    
+
+    public GameObject controller;
+
 	void Start ()
     {
         
@@ -28,5 +30,10 @@ public class MenuOptions : MonoBehaviour {
     public void menuScene()
     {
         SceneManager.LoadScene("MenuScene");
+    }
+
+    public void unpause()
+    {
+        controller.GetComponent<GameScript>().Unpause();
     }
 }

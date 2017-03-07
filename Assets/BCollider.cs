@@ -21,19 +21,15 @@ public class BCollider : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Active"))
+        if (willPerform && collision.CompareTag("BlobCollider"))
         {
-            collision.gameObject.GetComponent<Blob>().IncreaseSize(transform.GetComponentInParent<Blob>().blobSize);
-            Destroy(transform.parent.gameObject);
-        }
-        if (collision.gameObject.CompareTag("Blob") && gameObject.transform.parent.CompareTag("Blob"))
-        {
-            if (willPerform)
+            collision.GetComponent<BCollider>().willPerform = false;
+            if (collision.transform.parent.CompareTag("Active"))
             {
-                collision.gameObject.GetComponentInChildren<BCollider>().willPerform = false;
-                gameObject.GetComponent<Blob>().IncreaseSize(collision.transform.GetComponentInParent<Blob>().blobSize);
-                Destroy(collision.transform.parent);
+                transform.parent.tag = "Active";
             }
+            GetComponentInParent<Blob>().IncreaseSize(collision.GetComponentInParent<Blob>().blobSize);
+            Destroy(collision.transform.parent.gameObject);
         }
     }
 

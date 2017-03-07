@@ -7,25 +7,27 @@ public class GameScript : MonoBehaviour {
     GameObject player;
     public GameObject winScreen;
     public GameObject loseScreen;
-    public GameObject[] frags;
-    public Blob[] blobs;
+    public GameObject paused;
+    public GameObject[] doors;
+    public GameObject[] buttons;
+    public Dictionary<Button, Door> bdDict = new Dictionary<Button, Door>();
+
     
     public Camera cam;
     void Start ()
     {
         winScreen.SetActive(false);
         loseScreen.SetActive(false);
-        frags = GameObject.FindGameObjectsWithTag("BlobFrag");
-        blobs = FindObjectsOfType<Blob>();
+        paused.SetActive(false);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            bdDict.Add(buttons[i].GetComponent<Button>(), doors[i].GetComponent<Door>());
+        }
 	}
 	
 	void Update ()
     {
         player = GameObject.FindGameObjectWithTag("Active");
-        if(player.GetComponent<Blob>().blobSize == frags.Length + blobs.Length)
-        {
-            Win();
-        }
 	}
 
     public void Win()
@@ -38,5 +40,18 @@ public class GameScript : MonoBehaviour {
     {
         loseScreen.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void Pause()
+    {
+        paused.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Unpause()
+    {
+        paused.SetActive(false);
+        player.GetComponent<Blob>().SetTimer(1f);
+        Time.timeScale = 1;
     }
 }

@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4a4afde4fea124aaa991235c618f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loseScreen: {fileID: 0}
 --- !u!212 &212000014051639702
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -100,6 +99,6 @@ SpriteRenderer:
   m_SortingLayerID: -889924717
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c9245790c18ea17498a8318911980fa4, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.65517235, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
