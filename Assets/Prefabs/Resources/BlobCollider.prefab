@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4870067442185994}
-  - component: {fileID: 58425440749428522}
   - component: {fileID: 114802723194670964}
+  - component: {fileID: 61536892441129914}
   m_Layer: 9
   m_Name: BlobCollider
   m_TagString: BlobCollider
@@ -41,8 +41,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58425440749428522
-CircleCollider2D:
+--- !u!61 &61536892441129914
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -52,9 +52,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.17}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Size: {x: 1.2, y: 0.9}
 --- !u!114 &114802723194670964
 MonoBehaviour:
   m_ObjectHideFlags: 1

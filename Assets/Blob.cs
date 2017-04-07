@@ -13,13 +13,16 @@ public class Blob : MonoBehaviour
     public GameObject controller;
     bool paused = false;
     float timer;
+    float x, y;
     Camera cam;
     GameObject blobPrefab;
+    private Animator animator;
 
     void Start()
     {
         blob = GetComponent<Rigidbody2D>();
         cam = FindObjectOfType<Camera>();
+        animator = GetComponent<Animator>();
         blobPrefab = (GameObject)Resources.Load("Blob");
         currentBlobs = new ArrayList(GameObject.FindGameObjectsWithTag("Blob"));
         controller = GameObject.FindGameObjectWithTag("Controller");
@@ -27,6 +30,8 @@ public class Blob : MonoBehaviour
     
     void Update()
     {
+        x = GetComponent<Rigidbody2D>().velocity.x;
+        y = GetComponent<Rigidbody2D>().velocity.x;
         if (tag == "Active" && timer <= 0)
         {
             if (Input.GetKeyDown("w") && isOnGround)
@@ -66,6 +71,18 @@ public class Blob : MonoBehaviour
         if (timer > 0)
         {
             timer -= Time.deltaTime;
+        }
+        if (x > 0 && isOnGround)
+        {
+            animator.SetInteger("State", 1);
+        }
+        else if(x < 0 && isOnGround)
+        {
+            animator.SetInteger("State", -1);
+        }
+        else
+        {
+            animator.SetInteger("State", 0);
         }
     }
 
