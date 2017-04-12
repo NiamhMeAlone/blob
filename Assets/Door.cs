@@ -8,11 +8,13 @@ public class Door : MonoBehaviour {
     public float SPEED = 3;
     public bool open = false;
     float step;
+    AudioSource source;
 
 	void Start ()
     {
         oPos = transform.position;
         goPos.z = oPos.z;
+        source = GetComponent<AudioSource>();
 	}
 	
 	void Update ()
@@ -32,6 +34,7 @@ public class Door : MonoBehaviour {
     public void OpenDoor()
     {
         open = true;
+        source.PlayOneShot(source.clip);
     }
 
     public void CloseDoor()

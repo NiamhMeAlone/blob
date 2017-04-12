@@ -6,10 +6,12 @@ public class Button : MonoBehaviour
 {
 
     private GameObject controller;
+    AudioSource source;
 
     void Start()
     {
         controller = GameObject.FindGameObjectWithTag("Controller");
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -22,6 +24,7 @@ public class Button : MonoBehaviour
         if (collision.gameObject.CompareTag("ButtonActivate"))
         {
             controller.GetComponent<GameScript>().bdDict[this].OpenDoor();
+            source.PlayOneShot(source.clip);
         }
     }
 

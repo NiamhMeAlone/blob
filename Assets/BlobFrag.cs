@@ -24,6 +24,7 @@ public class BlobFrag : MonoBehaviour {
             gO = collision.gameObject;
             Blob player = gO.GetComponent<Blob>();
             player.IncreaseSize(size);
+            Blob.currentBlobs.Remove(gameObject);
             Destroy(gameObject, 0f);
         }
     }

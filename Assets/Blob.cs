@@ -9,13 +9,15 @@ public class Blob : MonoBehaviour
     bool isOnGround = true;
     public int blobSize = 1;
     public float blobSizeMod = 1;
-    static ArrayList currentBlobs;
+    public static ArrayList currentBlobs;
     public GameObject controller;
     bool paused = false;
     float timer;
+    AudioSource source;
     float x, y;
     Camera cam;
     GameObject blobPrefab;
+    AudioClip jump, land;
     private Animator animator;
 
     void Start()
@@ -23,7 +25,10 @@ public class Blob : MonoBehaviour
         blob = GetComponent<Rigidbody2D>();
         cam = FindObjectOfType<Camera>();
         animator = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
         blobPrefab = (GameObject)Resources.Load("Blob");
+        jump = (AudioClip)Resources.Load("Jump");
+        land = (AudioClip)Resources.Load("Land");
         currentBlobs = new ArrayList(GameObject.FindGameObjectsWithTag("Blob"));
         controller = GameObject.FindGameObjectWithTag("Controller");
     }
@@ -37,6 +42,8 @@ public class Blob : MonoBehaviour
             if (Input.GetKeyDown("w") && isOnGround)
             {
                 blob.AddForce(new Vector2(0, 32), ForceMode2D.Impulse);
+                animator.SetTrigger("Jump");
+                source.PlayOneShot(jump);
             }
             if (Input.GetMouseButtonDown(0) && blobSize > 1)
             {
@@ -56,6 +63,22 @@ public class Blob : MonoBehaviour
                 nextBlob.GetComponent<Blob>().timer = .2f;
                 tag = "Blob";
             }
+            if (!isOnGround)
+            {
+                float angle;
+                if (GetComponent<Rigidbody2D>().velocity.x > 0) {
+                    angle = Vector2.Angle(GetComponent<Rigidbody2D>().velocity, Vector2.down);
+                }
+                else
+                {
+                    angle = Vector2.Angle(GetComponent<Rigidbody2D>().velocity, Vector2.up);
+                }
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (paused)
@@ -68,6 +91,8 @@ public class Blob : MonoBehaviour
                 }
             }
         }
+        Debug.Log(GetComponent<Rigidbody2D>().velocity.x);
+        Debug.Log(GetComponent<Rigidbody2D>().velocity.y);
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -83,6 +108,33 @@ public class Blob : MonoBehaviour
         else
         {
             animator.SetInteger("State", 0);
+        }
+        if (tag == "Active" && !GetComponent<AudioSource>().isPlaying)
+        {
+            if (Input.GetKey("a"))
+            {
+                source.Play();
+            }
+            if (Input.GetKey("d"))
+            {
+                source.Play();
+            }
+        }
+        if (Input.GetKeyUp("a") && !Input.GetKey("d"))
+        {
+            source.Pause();
+        }
+        if (Input.GetKeyUp("d") && !Input.GetKey("a"))
+        {
+            source.Pause();
+        }
+        if (Input.GetKey("d") && Input.GetKey("a"))
+        {
+            source.Pause();
+        }
+        if (isOnGround && !Input.GetKey("a") && !Input.GetKey("d"))
+        {
+            source.Pause();
         }
     }
 
@@ -106,6 +158,7 @@ public class Blob : MonoBehaviour
         timer = time;
     }
 
+    /*
     void OnCollisionStay2D(Collision2D c)
     {
         if (c.gameObject.CompareTag("Floor") || c.gameObject.CompareTag("Button"))
@@ -113,9 +166,16 @@ public class Blob : MonoBehaviour
             isOnGround = true;
         }
     }
+    */
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Button"))
+        {
+            isOnGround = true;
+            animator.SetTrigger("Land");
+            source.PlayOneShot(land);
+        }
         if (collision.gameObject.CompareTag("Hazard"))
         {
             if (currentBlobs.Count > 0)
@@ -141,6 +201,7 @@ public class Blob : MonoBehaviour
         if (c.gameObject.CompareTag("Floor") || c.gameObject.CompareTag("Button"))
         {
             isOnGround = false;
+            animator.ResetTrigger("Land");
         }
     }
 
