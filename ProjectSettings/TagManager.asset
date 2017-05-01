@@ -16,6 +16,7 @@ TagManager:
   - ButtonActivate
   - Button
   - Door
+  - Texture
   layers:
   - Default
   - TransparentFX

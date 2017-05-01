@@ -1,23 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameScript : MonoBehaviour {
 
     GameObject player;
-    public GameObject winScreen;
-    public GameObject loseScreen;
     public GameObject paused;
     public GameObject[] doors;
     public GameObject[] buttons;
+    public int level;
     public Dictionary<Button, Door> bdDict = new Dictionary<Button, Door>();
 
     
     public Camera cam;
     void Start ()
     {
-        winScreen.SetActive(false);
-        loseScreen.SetActive(false);
         paused.SetActive(false);
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -32,13 +30,13 @@ public class GameScript : MonoBehaviour {
 
     public void Win()
     {
-        winScreen.SetActive(true);
+        SceneManager.LoadScene("Win" + level);
         Time.timeScale = 0;
     }
 
     public void Lose()
     {
-        loseScreen.SetActive(true);
+        SceneManager.LoadScene("Lose" + level);
         Time.timeScale = 0;
     }
 

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b67527d76ee66154abe78df0f29e45cd
+timeCreated: 1493629461
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Rubber Block
+  fontNames:
+  - Rubber Block
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

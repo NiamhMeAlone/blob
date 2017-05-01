@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 82606645091422756}
   m_Layer: 11
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,13 +37,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1501069760819786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -165, y: -133.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!50 &50653460898513126
 Rigidbody2D:
   serializedVersion: 4
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oPos: {x: 0, y: 0, z: 0}
-  goPos: {x: -165, y: -137.7, z: 0}
+  goPos: {x: -4, y: -4.5, z: 0}
   SPEED: 4
   open: 0
 --- !u!212 &212317324397959972
@@ -205,6 +205,6 @@ SpriteRenderer:
   m_SortingLayerID: -889924717
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7dfe4bee45c9c084690ed694dc33f831, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7372549, g: 0.7294118, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

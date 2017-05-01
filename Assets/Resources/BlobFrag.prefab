@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4415726730439616}
   - component: {fileID: 212806999345734014}
   - component: {fileID: 114727965320864274}
-  - component: {fileID: 58034169558404638}
   - component: {fileID: 50272357700396496}
   - component: {fileID: 95223108659765730}
+  - component: {fileID: 61472251585229874}
   m_Layer: 0
   m_Name: BlobFrag
   m_TagString: BlobFrag
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1742060321762254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -179.64166, y: -135.183, z: 0}
+  m_LocalPosition: {x: -170.54, y: -134.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58034169558404638
-CircleCollider2D:
+--- !u!61 &61472251585229874
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -75,9 +75,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.17}
   serializedVersion: 2
-  m_Radius: 0.65
+  m_Size: {x: 1.2, y: 0.9}
 --- !u!95 &95223108659765730
 Animator:
   serializedVersion: 3

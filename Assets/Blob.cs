@@ -13,8 +13,8 @@ public class Blob : MonoBehaviour
     public GameObject controller;
     bool paused = false;
     float timer;
+    BlobTexture texture;
     AudioSource source;
-    float x, y;
     Camera cam;
     GameObject blobPrefab;
     AudioClip jump, land;
@@ -26,6 +26,7 @@ public class Blob : MonoBehaviour
         cam = FindObjectOfType<Camera>();
         animator = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
+        texture = GetComponentInChildren<BlobTexture>();
         blobPrefab = (GameObject)Resources.Load("Blob");
         jump = (AudioClip)Resources.Load("Jump");
         land = (AudioClip)Resources.Load("Land");
@@ -35,8 +36,6 @@ public class Blob : MonoBehaviour
     
     void Update()
     {
-        x = GetComponent<Rigidbody2D>().velocity.x;
-        y = GetComponent<Rigidbody2D>().velocity.x;
         if (tag == "Active" && timer <= 0)
         {
             if (Input.GetKeyDown("w") && isOnGround)
@@ -67,17 +66,17 @@ public class Blob : MonoBehaviour
             {
                 float angle;
                 if (GetComponent<Rigidbody2D>().velocity.x > 0) {
-                    angle = Vector2.Angle(GetComponent<Rigidbody2D>().velocity, Vector2.down);
+                    angle = -Vector2.Angle(GetComponent<Rigidbody2D>().velocity, Vector2.up);
                 }
                 else
                 {
                     angle = Vector2.Angle(GetComponent<Rigidbody2D>().velocity, Vector2.up);
                 }
-                transform.rotation = Quaternion.Euler(0, 0, angle);
+                texture.transform.rotation = Quaternion.Euler(0, 0, angle);
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                texture.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -91,17 +90,15 @@ public class Blob : MonoBehaviour
                 }
             }
         }
-        Debug.Log(GetComponent<Rigidbody2D>().velocity.x);
-        Debug.Log(GetComponent<Rigidbody2D>().velocity.y);
         if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
-        if (x > 0 && isOnGround)
+        if (GetComponent<Rigidbody2D>().velocity.x > 0 && isOnGround)
         {
             animator.SetInteger("State", 1);
         }
-        else if(x < 0 && isOnGround)
+        else if(GetComponent<Rigidbody2D>().velocity.x < 0 && isOnGround)
         {
             animator.SetInteger("State", -1);
         }
@@ -157,22 +154,25 @@ public class Blob : MonoBehaviour
     {
         timer = time;
     }
-
-    /*
+    
     void OnCollisionStay2D(Collision2D c)
     {
         if (c.gameObject.CompareTag("Floor") || c.gameObject.CompareTag("Button"))
         {
             isOnGround = true;
+            texture.GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = true;
+            animator.SetTrigger("Land");
         }
     }
-    */
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Button"))
         {
             isOnGround = true;
+            texture.GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = true;
             animator.SetTrigger("Land");
             source.PlayOneShot(land);
         }
@@ -196,11 +196,25 @@ public class Blob : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("VictoryZone"))
+        {
+            if (CompareTag("Blob"))
+            {
+                GameObject nextBlob = gameObject;
+            }
+            controller.GetComponent<GameScript>().Win();
+        }
+    } 
+
     void OnCollisionExit2D(Collision2D c)
     {
         if (c.gameObject.CompareTag("Floor") || c.gameObject.CompareTag("Button"))
         {
             isOnGround = false;
+            texture.GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<SpriteRenderer>().enabled = false;
             animator.ResetTrigger("Land");
         }
     }
